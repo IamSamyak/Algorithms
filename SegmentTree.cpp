@@ -9,6 +9,7 @@ class SegmentTreeMax{
         void build(int ind,int low,int high,vector<int>&arr){
             if(low == high){
                 seg[ind] = arr[low];
+                return;
             }
             int mid = (low+high)/2;
             build(2*ind+1,low,mid,arr);
