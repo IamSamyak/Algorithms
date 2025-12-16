@@ -90,6 +90,11 @@ class SegmentTree {
         return operation.merge(leftResult, rightResult);
     }
 
+    // User-friendly query function
+    int query(int leftQ, int rightQ) {
+        return query(0, 0, n - 1, leftQ, rightQ);
+    }
+
     void pointUpdate(int ind, int left, int right, int indQ, int value) {
         if (left == right) {
             seg[ind] = value;
@@ -107,5 +112,10 @@ class SegmentTree {
                 seg[2 * ind + 1],
                 seg[2 * ind + 2]
         );
+    }
+
+    // User-friendly point update function
+    void pointUpdate(int indQ, int value) {
+        pointUpdate(0, 0, n - 1, indQ, value);
     }
 }
