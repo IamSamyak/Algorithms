@@ -40,10 +40,14 @@ enum Operation {
 class SegmentTree {
     int seg[];
     Operation operation;
+    int n;
 
-    SegmentTree(int n, Operation operation) {
+    // Constructor directly takes arr[]
+    SegmentTree(int arr[], Operation operation) {
+        this.n = arr.length;
         seg = new int[4 * n + 1];
         this.operation = operation;
+        build(0, 0, n - 1, arr);
     }
 
     void build(int ind, int left, int right, int arr[]) {
