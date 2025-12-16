@@ -57,11 +57,15 @@ class SegmentTreeLazy {
     int seg[];
     int lazy[];
     Operation operation;
+    int n;
 
-    SegmentTreeLazy(int n, Operation operation) {
+    // Constructor directly takes arr[]
+    SegmentTreeLazy(int arr[], Operation operation) {
+        this.n = arr.length;
         seg = new int[4 * n + 1];
         lazy = new int[4 * n + 1];
         this.operation = operation;
+        build(0, 0, n - 1, arr);
     }
 
     void build(int ind, int left, int right, int arr[]) {
@@ -149,5 +153,23 @@ class SegmentTreeLazy {
         int rightResult = rangeQuery(2 * ind + 2, mid + 1, right, leftQ, rightQ);
 
         return operation.merge(leftResult, rightResult);
+    }
+
+    // User-friendly range update
+    void rangeUpdate(int leftQ, int rightQ, int value) {
+        if (leftQ < 0) leftQ = 0;
+        if (rightQ >= n) rightQ = n - 1;
+        if (leftQ > rightQ) return;
+
+        rangeUpdate(0, 0, n - 1, leftQ, rightQ, value);
+    }
+
+    // User-friendly range query
+    int rangeQuery(int leftQ, int rightQ) {
+        if (leftQ < 0) leftQ = 0;
+        if (rightQ >= n) rightQ = n - 1;
+        if (leftQ > rightQ) return operation.identity();
+
+        return rangeQuery(0, 0, n - 1, leftQ, rightQ);
     }
 }
