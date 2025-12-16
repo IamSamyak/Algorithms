@@ -1,84 +1,153 @@
-class SegmentTreeLazy{
+enum Operation {
+    SUM {
+        @Override
+        int merge(int a, int b) {
+            return a + b;
+        }
+
+        @Override
+        int identity() {
+            return 0;
+        }
+
+        @Override
+        int applyLazy(int value, int lazy, int length) {
+            return value + lazy * length;
+        }
+    },
+    MIN {
+        @Override
+        int merge(int a, int b) {
+            return Math.min(a, b);
+        }
+
+        @Override
+        int identity() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        int applyLazy(int value, int lazy, int length) {
+            return value + lazy;
+        }
+    },
+    MAX {
+        @Override
+        int merge(int a, int b) {
+            return Math.max(a, b);
+        }
+
+        @Override
+        int identity() {
+            return Integer.MIN_VALUE;
+        }
+
+        @Override
+        int applyLazy(int value, int lazy, int length) {
+            return value + lazy;
+        }
+    };
+
+    abstract int merge(int a, int b);
+    abstract int identity();
+    abstract int applyLazy(int value, int lazy, int length);
+}
+
+class SegmentTreeLazy {
     int seg[];
     int lazy[];
-    
-    SegmentTreeLazy(int n){
-        seg = new int[4*n + 1];
-        lazy = new int[4*n + 1];
+    Operation operation;
+
+    SegmentTreeLazy(int n, Operation operation) {
+        seg = new int[4 * n + 1];
+        lazy = new int[4 * n + 1];
+        this.operation = operation;
     }
-    
-    void build(int ind, int left, int right, int arr[]){
-        if(left == right){
+
+    void build(int ind, int left, int right, int arr[]) {
+        if (left == right) {
             seg[ind] = arr[left];
             return;
         }
+
         int mid = (left + right) / 2;
+
         build(2 * ind + 1, left, mid, arr);
         build(2 * ind + 2, mid + 1, right, arr);
-        seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
+
+        seg[ind] = operation.merge(
+                seg[2 * ind + 1],
+                seg[2 * ind + 2]
+        );
     }
-    
-    void rangeUpdate(int ind, int left, int right, int leftQ, int rightQ, int value){
+
+    void pushDown(int ind, int left, int right) {
+        if (lazy[ind] != 0) {
+            seg[ind] = operation.applyLazy(
+                    seg[ind],
+                    lazy[ind],
+                    right - left + 1
+            );
+
+            if (left != right) {
+                lazy[2 * ind + 1] += lazy[ind];
+                lazy[2 * ind + 2] += lazy[ind];
+            }
+            lazy[ind] = 0;
+        }
+    }
+
+    void rangeUpdate(int ind, int left, int right, int leftQ, int rightQ, int value) {
         // Update previous remaining updates if any
         // propogate the updates downwards
-        if(lazy[ind] != 0){
-            seg[ind] += ((right - left + 1) * lazy[ind]);
-            if(left != right){
-                lazy[2 * ind + 1] += lazy[ind];
-                lazy[2 * ind + 2] += lazy[ind];
-            }
-            lazy[ind] = 0;
-        }
-        
+        pushDown(ind, left, right);
+
         // [leftQ...rightQ]...[left...right] or [left...right]...[leftQ...rightQ]
         // No overlap
-        if(rightQ < left || right < leftQ) return;
-        
+        if (rightQ < left || right < leftQ) return;
+
         // [leftQ...left...right...rightQ]
         // Complete overlap
-        if(leftQ <= left && right <= rightQ){
-            seg[ind] += (right - left + 1) * value;
-            if(left != right){
-                lazy[2 * ind + 1] += value;
-                lazy[2 * ind + 2] += value;
-            }
+        if (leftQ <= left && right <= rightQ) {
+            lazy[ind] += value;
+            pushDown(ind, left, right);
             return;
         }
-        
+
         // Partial overlap
         int mid = (left + right) / 2;
+
         // left subtree
         rangeUpdate(2 * ind + 1, left, mid, leftQ, rightQ, value);
-        
-        //right subtree
+
+        // right subtree
         rangeUpdate(2 * ind + 2, mid + 1, right, leftQ, rightQ, value);
-        
-        seg[ind] = seg[2 * ind + 1] + seg[2 * ind + 2];
+
+        seg[ind] = operation.merge(
+                seg[2 * ind + 1],
+                seg[2 * ind + 2]
+        );
     }
-    
-    int rangeQuery(int ind, int left, int right, int leftQ, int rightQ){
-        if(lazy[ind] != 0){
-            seg[ind] += (right - left + 1) * lazy[ind];
-            if(left != right){
-                lazy[2 * ind + 1] += lazy[ind];
-                lazy[2 * ind + 2] += lazy[ind];
-            }
-            lazy[ind] = 0;
-        }
-        
+
+    int rangeQuery(int ind, int left, int right, int leftQ, int rightQ) {
+        pushDown(ind, left, right);
+
         // [leftQ...rightQ]...[left...right] or [left...right]...[leftQ...rightQ]
         // No overlap
-        if(rightQ < left || right < leftQ) return 0;
-        
+        if (rightQ < left || right < leftQ)
+            return operation.identity();
+
         // [leftQ...left...right...rightQ]
         // Complete overlap
-        if(leftQ <= left && right <= rightQ) return seg[ind];
-        
-        //Partial overlap
+        if (leftQ <= left && right <= rightQ)
+            return seg[ind];
+
+        // Partial overlap
         int mid = (left + right) / 2;
+
         int leftResult = rangeQuery(2 * ind + 1, left, mid, leftQ, rightQ);
         int rightResult = rangeQuery(2 * ind + 2, mid + 1, right, leftQ, rightQ);
 
-        return leftResult + rightResult;
+        return operation.merge(leftResult, rightResult);
     }
 }
