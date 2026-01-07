@@ -37,5 +37,13 @@
     "time": "O(log n)",
     "space": "O(n)",
     "description": "Reusable template for segment trees supporting customizable merge operations."
+  },
+
+  "Trie": {
+    "category": "String / Data Structure",
+    "difficulty": "Medium",
+    "time": "O(L)",
+    "space": "O(Alphabet × Nodes)",
+    "description": "Trie (Prefix Tree) efficiently stores and searches strings, supporting fast prefix-based queries like autocomplete and dictionary lookup."
   }
 }
