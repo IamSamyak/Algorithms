@@ -1,23 +1,24 @@
+import java.util.function.Predicate;
+
 public class BinarySearchTemplate {
 
     /**
-     * Finds the first index where condition(mid) is true.
+     * Finds the first index where the custom condition is true.
      * Monotone condition: TTTFFFF (true, then false)
-     * Example: find first element >= target in a sorted array.
      */
-    public static int binarySearch(int[] arr, int target) {
+    public static int binarySearch(int n, Predicate<Integer> condition) {
         int left = 0;
-        int right = arr.length - 1;
-        int ans = -1; // default if not found
+        int right = n - 1;
+        int ans = -1;
 
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if (arr[mid] >= target) { // condition: change as needed
-                ans = mid;           // potential answer
-                right = mid - 1;     // search left side for first occurrence
+            if (condition.test(mid)) { // <-- custom condition
+                ans = mid;            // potential answer
+                right = mid - 1;      // search left side
             } else {
-                left = mid + 1;      // search right side
+                left = mid + 1;       // search right side
             }
         }
 
@@ -25,21 +26,20 @@ public class BinarySearchTemplate {
     }
 
     /**
-     * Finds the last index where condition(mid) is true.
+     * Finds the last index where the custom condition is true.
      * Monotone condition: FFFTTT (false, then true)
-     * Example: find last element <= target in a sorted array.
      */
-    public static int binarySearchLast(int[] arr, int target) {
+    public static int binarySearchLast(int n, Predicate<Integer> condition) {
         int left = 0;
-        int right = arr.length - 1;
+        int right = n - 1;
         int ans = -1;
 
         while (left <= right) {
             int mid = left + (right - left) / 2;
 
-            if (arr[mid] <= target) {  // condition: change as needed
-                ans = mid;            // potential answer
-                left = mid + 1;       // search right side for last occurrence
+            if (condition.test(mid)) { // <-- custom condition
+                ans = mid;
+                left = mid + 1;       // search right side
             } else {
                 right = mid - 1;      // search left side
             }
