@@ -1,0 +1,41 @@
+{
+  "DSU": {
+    "category": "Graph",
+    "difficulty": "Medium",
+    "time": "Almost O(1)",
+    "space": "O(n)",
+    "description": "Disjoint Set Union (Union-Find) efficiently manages connected components using path compression and union by rank."
+  },
+
+  "Kmp": {
+    "category": "String",
+    "difficulty": "Medium",
+    "time": "O(n + m)",
+    "space": "O(m)",
+    "description": "Knuth–Morris–Pratt algorithm finds pattern occurrences in a string using prefix function."
+  },
+
+  "Mo_Algorithm": {
+    "category": "Query Processing",
+    "difficulty": "Hard",
+    "time": "O((n + q) √n)",
+    "space": "O(n)",
+    "description": "Mo's Algorithm answers offline range queries efficiently by reordering queries."
+  },
+
+  "SegmentTreeLazy": {
+    "category": "Data Structure",
+    "difficulty": "Hard",
+    "time": "O(log n)",
+    "space": "O(n)",
+    "description": "Segment Tree with Lazy Propagation supports efficient range updates and range queries."
+  },
+
+  "SegmentTreeTemplate": {
+    "category": "Data Structure",
+    "difficulty": "Medium",
+    "time": "O(log n)",
+    "space": "O(n)",
+    "description": "Reusable template for segment trees supporting customizable merge operations."
+  }
+}
