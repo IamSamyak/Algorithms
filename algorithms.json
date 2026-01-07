@@ -50,8 +50,16 @@
   "BinaryLifting": {
     "category": "Graph / Tree",
     "difficulty": "Medium",
-    "time": "O(log n) per query after O(n log n) preprocessing",
+    "time": "O(log n per query after O(n log n) preprocessing)",
     "space": "O(n log n)",
     "description": "Binary Lifting efficiently finds the Lowest Common Ancestor (LCA) of two nodes in a tree. It precomputes 2^i-th ancestors of each node to answer LCA and distance queries in logarithmic time."
+  },
+
+  "BinarySearchTemplate": {
+    "category": "Search / Array / General",
+    "difficulty": "Medium",
+    "time": "O(log n)",
+    "space": "O(1)",
+    "description": "Binary Search Template supports searching for the first or last index that satisfies a custom monotone condition using a Predicate<Integer>. It works for arrays, ranges, and abstract search spaces. Use 'binarySearch' for first true (TTTFFFF) and 'binarySearchLast' for last true (FFFTTT)."
   }
 }
