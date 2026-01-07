@@ -45,5 +45,13 @@
     "time": "O(L)",
     "space": "O(Alphabet × Nodes)",
     "description": "Trie (Prefix Tree) efficiently stores and searches strings, supporting fast prefix-based queries like autocomplete and dictionary lookup."
+  },
+
+  "BinaryLifting": {
+    "category": "Graph / Tree",
+    "difficulty": "Medium",
+    "time": "O(log n) per query after O(n log n) preprocessing",
+    "space": "O(n log n)",
+    "description": "Binary Lifting efficiently finds the Lowest Common Ancestor (LCA) of two nodes in a tree. It precomputes 2^i-th ancestors of each node to answer LCA and distance queries in logarithmic time."
   }
 }
