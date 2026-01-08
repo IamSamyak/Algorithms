@@ -61,5 +61,29 @@
     "time": "O(log n)",
     "space": "O(1)",
     "description": "Binary Search Template supports searching for the first or last index that satisfies a custom monotone condition using a Predicate<Integer>. It works for arrays, ranges, and abstract search spaces. Use 'binarySearch' for first true (TTTFFFF) and 'binarySearchLast' for last true (FFFTTT)."
+  },
+
+  "BitmaskDP": {
+    "category": "Dynamic Programming / Bitmask",
+    "difficulty": "Medium",
+    "time": "O(n * 2^n)",
+    "space": "O(2^n)",
+    "description": "Bitmask DP solves problems involving subsets of n elements. Each subset is represented as a bitmask and DP stores optimal values for each subset, enabling efficient solutions to combinatorial optimization problems."
+  },
+
+  "KadaneAlgorithm": {
+    "category": "Dynamic Programming / Array",
+    "difficulty": "Easy",
+    "time": "O(n)",
+    "space": "O(1)",
+    "description": "Kadane's Algorithm finds the maximum sum subarray in an array of numbers in linear time using a simple DP approach that tracks current maximum subarray ending at each index."
+  },
+
+  "SieveTemplate": {
+    "category": "Number Theory",
+    "difficulty": "Easy",
+    "time": "O(n log log n)",
+    "space": "O(n)",
+    "description": "Sieve of Eratosthenes efficiently computes prime numbers up to n. The template can also be extended to compute smallest prime factors or totients for all numbers."
   }
 }
