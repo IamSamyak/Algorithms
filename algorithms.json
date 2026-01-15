@@ -85,5 +85,13 @@
     "time": "O(n log log n)",
     "space": "O(n)",
     "description": "Sieve of Eratosthenes efficiently computes prime numbers up to n. The template can also be extended to compute smallest prime factors or totients for all numbers."
+  },
+
+  "ManachersAlgorithm": {
+    "category": "String / Palindromes",
+    "difficulty": "Hard",
+    "time": "O(n)",
+    "space": "O(n)",
+    "description": "Manacher’s Algorithm finds the longest palindromic substring in linear time by transforming the string and leveraging palindrome symmetry to reuse previously computed information, avoiding redundant expansions."
   }
 }
