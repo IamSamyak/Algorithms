@@ -87,7 +87,7 @@
     "description": "Sieve of Eratosthenes efficiently computes prime numbers up to n. The template can also be extended to compute smallest prime factors or totients for all numbers."
   },
 
-  "ManachersAlgorithm": {
+  "Manacher": {
     "category": "String / Palindromes",
     "difficulty": "Hard",
     "time": "O(n)",
