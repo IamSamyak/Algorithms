@@ -2,7 +2,11 @@
   "DSU": {
     "category": "Graph",
     "difficulty": "Medium",
-    "time": "Almost O(1)",
+    "time": {
+      "best": "O(α(n))",
+      "average": "O(α(n))",
+      "worst": "O(α(n))"
+    },
     "space": "O(n)",
     "description": "Disjoint Set Union (Union-Find) efficiently manages connected components using path compression and union by rank."
   },
@@ -10,7 +14,11 @@
   "Kmp": {
     "category": "String",
     "difficulty": "Medium",
-    "time": "O(n + m)",
+    "time": {
+      "best": "O(n + m)",
+      "average": "O(n + m)",
+      "worst": "O(n + m)"
+    },
     "space": "O(m)",
     "description": "Knuth–Morris–Pratt algorithm finds pattern occurrences in a string using prefix function."
   },
@@ -18,7 +26,11 @@
   "Mo_Algorithm": {
     "category": "Query Processing",
     "difficulty": "Hard",
-    "time": "O((n + q) √n)",
+    "time": {
+      "best": "O((n + q) √n)",
+      "average": "O((n + q) √n)",
+      "worst": "O((n + q) √n)"
+    },
     "space": "O(n)",
     "description": "Mo's Algorithm answers offline range queries efficiently by reordering queries."
   },
@@ -26,7 +38,11 @@
   "SegmentTreeLazy": {
     "category": "Data Structure",
     "difficulty": "Hard",
-    "time": "O(log n)",
+    "time": {
+      "best": "O(log n)",
+      "average": "O(log n)",
+      "worst": "O(log n)"
+    },
     "space": "O(n)",
     "description": "Segment Tree with Lazy Propagation supports efficient range updates and range queries."
   },
@@ -34,7 +50,11 @@
   "SegmentTreeTemplate": {
     "category": "Data Structure",
     "difficulty": "Medium",
-    "time": "O(log n)",
+    "time": {
+      "best": "O(log n)",
+      "average": "O(log n)",
+      "worst": "O(log n)"
+    },
     "space": "O(n)",
     "description": "Reusable template for segment trees supporting customizable merge operations."
   },
@@ -42,7 +62,11 @@
   "Trie": {
     "category": "String / Data Structure",
     "difficulty": "Medium",
-    "time": "O(L)",
+    "time": {
+      "best": "O(L)",
+      "average": "O(L)",
+      "worst": "O(L)"
+    },
     "space": "O(Alphabet × Nodes)",
     "description": "Trie (Prefix Tree) efficiently stores and searches strings, supporting fast prefix-based queries like autocomplete and dictionary lookup."
   },
@@ -50,7 +74,11 @@
   "BinaryLifting": {
     "category": "Graph / Tree",
     "difficulty": "Medium",
-    "time": "O(log n per query after O(n log n) preprocessing)",
+    "time": {
+      "best": "O(log n per query)",
+      "average": "O(log n per query)",
+      "worst": "O(log n per query)"
+    },
     "space": "O(n log n)",
     "description": "Binary Lifting efficiently finds the Lowest Common Ancestor (LCA) of two nodes in a tree. It precomputes 2^i-th ancestors of each node to answer LCA and distance queries in logarithmic time."
   },
@@ -58,7 +86,11 @@
   "BinarySearchTemplate": {
     "category": "Search / Array / General",
     "difficulty": "Medium",
-    "time": "O(log n)",
+    "time": {
+      "best": "O(1)",
+      "average": "O(log n)",
+      "worst": "O(log n)"
+    },
     "space": "O(1)",
     "description": "Binary Search Template supports searching for the first or last index that satisfies a custom monotone condition using a Predicate<Integer>. It works for arrays, ranges, and abstract search spaces. Use 'binarySearch' for first true (TTTFFFF) and 'binarySearchLast' for last true (FFFTTT)."
   },
@@ -66,7 +98,11 @@
   "BitmaskDP": {
     "category": "Dynamic Programming / Bitmask",
     "difficulty": "Medium",
-    "time": "O(n * 2^n)",
+    "time": {
+      "best": "O(n * 2^n)",
+      "average": "O(n * 2^n)",
+      "worst": "O(n * 2^n)"
+    },
     "space": "O(2^n)",
     "description": "Bitmask DP solves problems involving subsets of n elements. Each subset is represented as a bitmask and DP stores optimal values for each subset, enabling efficient solutions to combinatorial optimization problems."
   },
@@ -74,7 +110,11 @@
   "KadaneAlgorithm": {
     "category": "Dynamic Programming / Array",
     "difficulty": "Easy",
-    "time": "O(n)",
+    "time": {
+      "best": "O(n)",
+      "average": "O(n)",
+      "worst": "O(n)"
+    },
     "space": "O(1)",
     "description": "Kadane's Algorithm finds the maximum sum subarray in an array of numbers in linear time using a simple DP approach that tracks current maximum subarray ending at each index."
   },
@@ -82,7 +122,11 @@
   "SieveTemplate": {
     "category": "Number Theory",
     "difficulty": "Easy",
-    "time": "O(n log log n)",
+    "time": {
+      "best": "O(n log log n)",
+      "average": "O(n log log n)",
+      "worst": "O(n log log n)"
+    },
     "space": "O(n)",
     "description": "Sieve of Eratosthenes efficiently computes prime numbers up to n. The template can also be extended to compute smallest prime factors or totients for all numbers."
   },
@@ -90,7 +134,11 @@
   "Manacher": {
     "category": "String / Palindromes",
     "difficulty": "Hard",
-    "time": "O(n)",
+    "time": {
+      "best": "O(n)",
+      "average": "O(n)",
+      "worst": "O(n)"
+    },
     "space": "O(n)",
     "description": "Manacher’s Algorithm finds the longest palindromic substring in linear time by transforming the string and leveraging palindrome symmetry to reuse previously computed information, avoiding redundant expansions."
   }
